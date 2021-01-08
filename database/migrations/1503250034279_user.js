@@ -11,6 +11,7 @@ class UserSchema extends Schema {
       collection.index('password', { password: 1 }, { unique: false })
       collection.index('phone', { phone: 1 }, { unit: false })
       collection.index('name', { name: 1 }, { unique: false })
+      collection.index('status', { status: 1 }, { unique: false })
     })
   }
 

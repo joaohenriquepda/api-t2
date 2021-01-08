@@ -31,7 +31,8 @@ module.exports = {
     serializer: 'LucidMongo',
     model: 'App/Models/User',
     scheme: 'session',
-    uid: 'email',
+    uid: 'cpf',
+    email:'email',
     password: 'password'
   },
 
@@ -52,7 +53,8 @@ module.exports = {
     serializer: 'LucidMongo',
     model: 'App/Models/User',
     scheme: 'basic',
-    uid: 'email',
+    uid: 'cpf',
+    email:'email',
     password: 'password'
   },
 
@@ -69,8 +71,9 @@ module.exports = {
     serializer: 'LucidMongo',
     model: 'App/Models/User',
     scheme: 'jwt',
-    uid: 'email',
+    uid: 'cpf',
     password: 'password',
+    email:'email',
     options: {
       secret: Env.get('APP_KEY')
     }
@@ -88,7 +91,8 @@ module.exports = {
     serializer: 'LucidMongo',
     model: 'App/Models/User',
     scheme: 'api',
-    uid: 'email',
+    uid: 'cpf',
+    email:'email',
     password: 'password'
   }
 }
