@@ -22,3 +22,7 @@ Route.get('/', () => {
 
 Route.get('/users', 'UserController.all')
 Route.post('/users', 'UserController.create')
+Route.delete('/users/:id', 'UserController.delete')
+Route.put('/users/:id', 'UserController.update')
+
+Route.post('/sessions', 'SessionController.create')
