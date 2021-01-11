@@ -22,7 +22,8 @@ Route.get('/', () => {
 
 Route.get('/users', 'UserController.all')
 Route.post('/users', 'UserController.create')
-Route.delete('/users/:id', 'UserController.delete')
-Route.put('/users/:id', 'UserController.update')
+Route.delete('/users/:id', 'UserController.delete').middleware('auth')
+Route.put('/users/:id', 'UserController.update').middleware('auth')
+Route.get('/users/:id', 'UserController.profile').middleware('auth')
 
 Route.post('/sessions', 'SessionController.create')

@@ -50,6 +50,25 @@ class UserController {
         }
     }
 
+
+    async profile({ request, params, response, auth }) {
+
+        try {
+            const aux = await User.where({ _id: params.id }).fetch();
+            const user = aux.rows[0]
+            return user
+
+        } catch (error) {
+            return response.status(error.status).json({
+                error: {
+                    message: "Error when Update User",
+                    error: error.message
+                }
+            })
+        }
+    }
+
+
     async delete({ response, params, request }) {
 
         try {
