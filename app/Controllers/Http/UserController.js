@@ -29,9 +29,10 @@ class UserController {
 
     }
 
-    async update({ request, params, response }) {
+    async update({ request, params, response, auth }) {
 
         try {
+            auth.check()
             const aux = await User.where({ _id: params.id }).fetch();
             const user = aux.rows[0]
             const data = request.only(["name", "email", "password", "phone"])
@@ -54,6 +55,7 @@ class UserController {
     async profile({ request, params, response, auth }) {
 
         try {
+            auth.check();
             const aux = await User.where({ _id: params.id }).fetch();
             const user = aux.rows[0]
             return user
