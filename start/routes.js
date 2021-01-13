@@ -20,7 +20,7 @@ Route.get('/', () => {
   return { greeting: 'Teste T2 Software' }
 })
 
-Route.get('/users', 'UserController.all')
+Route.get('/users', 'UserController.all').middleware('auth')
 Route.post('/users', 'UserController.create')
 Route.delete('/users/:id', 'UserController.delete').middleware('auth')
 Route.put('/users/:id', 'UserController.update').middleware('auth')

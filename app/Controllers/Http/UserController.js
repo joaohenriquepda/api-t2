@@ -4,9 +4,20 @@ const User = use("App/Models/User")
 
 class UserController {
 
-    async all({ request, response }) {
-        const users = await User.where({ status: true }).fetch()
-        return users.rows
+    async all({ request, response, auth }) {
+
+        try {
+            await auth.check();
+            const users = await User.where({ status: true }).fetch()
+            return users.rows
+        } catch (error) {
+            return response.status(error.status).json({
+                error: {
+                    message: "Error when Get All  Users",
+                    error: error.message
+                }
+            })
+        }
     }
 
     async create({ request }) {
@@ -31,10 +42,13 @@ class UserController {
 
     async update({ request, params, response, auth }) {
 
+        console.log("exrcftvgbhyjnkml,ç.");
+
         try {
-            auth.check()
+            await auth.check();
             const aux = await User.where({ _id: params.id }).fetch();
             const user = aux.rows[0]
+            
             const data = request.only(["name", "email", "password", "phone"])
             user.merge(data);
             user.save();

@@ -1,28 +1,45 @@
-# Adonis API application
+# T2-Solution
 
-This is the boilerplate for creating an API server in AdonisJs, it comes pre-configured with.
+## Ambiente de desenvolvimento 
 
-1. Bodyparser
-2. Authentication
-3. CORS
-4. Lucid ORM
-5. Migrations and seeds
+O ambiente de desenvolvimento consta com suas dependências em containers do Docker. Caso precise instalar o docker na raíz do projeto já tem dois scripts de instalação do Docker e Docker compose para ambientes Linux.
 
-## Setup
+Para utilizar o docker para executar o projeto basta executar o comando abaixo na raíz do projeto
+```
+$ docker-compose up
+```
+O Docker irá realizar o download de todas as dependências necessárias e ao final do processo o projeto estará disponível para acesso em **https://localhost:3333**
 
-Use the adonis command to install the blueprint
 
-```bash
-adonis new yardstick --api-only
+## Comandos úteis
+
+### server local
+Caso não queria usar o Docker para gerenciar as dependências do projeto e já tenha sua máquina configurada com Node e o Adonis, poderá usar o comando a seguir para colocar o sistema em funcionamento
+
+```
+$ adonis serve --dev
 ```
 
-or manually clone the repo and then run `npm install`.
+Se tudo ocorrer conforme o esperado poderá acessar o projeto em *https://localhost:3333**
 
+## Processo de deploy e CI/CD
 
-### Migrations
+ Atualmente o projeto não conta com integração contínua e deploy contínuo integrado, o processo ainda é manual. Segue abaixo as instruçõe para realizar o deploy no  servidor **Heroku**
 
-Run the following command to run startup migrations.
+ Primeiro precisamos atualizar os arquivos da master, feito isso com o comando a seguir damos início ao processo de deploy o servidor Heroku. Lembrando que o servidor já contém as variáveis de ambiente e caso necessite irá executar os migrates.
 
-```js
-adonis migration:run
+ ```
+$ git push heroku master
 ```
+
+O processo vai se iniciar e se caso ocorrer bem em poucos segundos a API já estará pronta para uso
+
+
+## Links de acesso
+ 
+ O projeto está hospedado no firebase e pode ser acessado em 
+ 
+ https://t2solution.web.app/login
+
+ A API do projeto está  
+https://api-t2.herokuapp.com/
